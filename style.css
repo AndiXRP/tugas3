@@ -1,0 +1,221 @@
+/* =================================
+   TEMA GELAP & TATA LETAK ATAS
+   ================================= */
+
+/* Pengaturan Dasar Halaman */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    background-color: #1a1a1a; /* Latar belakang utama gelap */
+    color: #e0e0e0; /* Warna teks dasar terang */
+    margin: 0;
+    padding: 2rem;
+}
+
+/* Kontainer Utama Aplikasi */
+#app-container {
+    background-color: #2b2b2b; /* Latar belakang kontainer sedikit lebih terang */
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    padding: 1.5rem 2rem;
+    width: fit-content;
+    text-align: center;
+    border: 1px solid #444;
+}
+
+h1 {
+    font-weight: 700;
+    font-size: 2.2rem;
+    margin-top: 0;
+    margin-bottom: 2rem;
+    background: linear-gradient(45deg, #00c9b7, #8f94fb); /* Gradient baru (Teal ke Ungu) */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding: 0;
+    border-radius: 0;
+}
+
+/* --- PERUBAHAN TATA LETAK UTAMA --- */
+#main-content {
+    display: flex;
+    flex-direction: column; /* Mengubah tata letak menjadi vertikal */
+    gap: 1.5rem;
+    align-items: center; /* Pusatkan semua elemen */
+}
+
+#left-panel {
+    display: flex;
+    flex-direction: row; /* Kontrol berbaris horizontal */
+    flex-wrap: wrap; /* Izinkan kontrol pindah baris jika tidak cukup tempat */
+    gap: 1.5rem;
+    width: 800px; /* Lebar panel sama dengan kanvas */
+    justify-content: center;
+}
+
+/* Area Kontrol & Panel */
+#drawing-controls, #transform-controls {
+    display: flex;
+    flex-direction: row; /* Kontrol di dalam panel juga horizontal */
+    align-items: center;
+    gap: 1rem;
+    padding: 0.8rem 1.2rem;
+    background-color: #333;
+    border-radius: 8px;
+    border: 1px solid #444;
+    transition: opacity 0.3s ease;
+}
+
+#object-inspector {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: #333;
+    border-radius: 8px;
+    border: 1px solid #444;
+    width: 100%;
+}
+
+/* Gaya untuk panel yang dinonaktifkan */
+#drawing-controls.disabled {
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+#drawing-controls h4, #transform-controls h4, #object-inspector h4 {
+    margin: 0;
+    font-size: 1em;
+    color: #00c9b7; /* Warna aksen Teal */
+    border-bottom: none;
+    padding: 0;
+    white-space: nowrap;
+}
+
+.control-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Elemen-elemen di dalam panel */
+select, input[type="color"], button, input[type="number"], input[type="range"] {
+    background-color: #4f4f4f;
+    color: #e0e0e0;
+    border: 1px solid #666;
+    border-radius: 6px;
+    font-size: 0.9em;
+    padding: 0.5rem;
+}
+button, select, input[type="color"] {
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+button:hover {
+    background-color: #5a5a5a;
+}
+button:disabled {
+    background-color: #444;
+    color: #888;
+    cursor: not-allowed;
+}
+
+input[type="range"] {
+    flex-grow: 1;
+}
+input[type="color"] {
+    min-width: 40px;
+}
+
+/* Gaya untuk Pemilih Mode Utama */
+.main-mode-selector {
+    display: flex;
+    background-color: #333;
+    border-radius: 8px;
+    padding: 5px;
+    border: 1px solid #444;
+}
+.main-mode-selector input[type="radio"] {
+    display: none;
+}
+.main-mode-selector label {
+    flex: 1;
+    padding: 0.6rem 1rem;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    font-weight: 500;
+    color: #aaa;
+}
+.main-mode-selector input[type="radio"]:checked + label {
+    background-color: #00c9b7;
+    color: #1a1a1a;
+    box-shadow: 0 2px 8px rgba(0, 201, 183, 0.3);
+}
+
+/* Gaya untuk Penampil Koordinat Mouse & Tombol Aksi */
+#mouse-coords-display {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.8rem 1.2rem;
+    background-color: #333;
+    border-radius: 8px;
+    border: 1px solid #444;
+}
+#mouse-coords-display .coords-label {
+    font-weight: 500;
+    color: #aaa;
+}
+#mouse-coords-display #coords-output {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    color: #e0e0e0;
+    background-color: #4f4f4f;
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    min-width: 100px;
+    text-align: center;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 0.8rem;
+    padding: 0;
+    border: none;
+}
+
+/* Inspector Objek */
+#inspector-output {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9em;
+    text-align: left;
+    margin: 0;
+    padding: 0.8rem;
+    background-color: #222;
+    color: #d0d0d0;
+    border-radius: 6px;
+    white-space: pre-wrap;
+    line-height: 1.7;
+}
+
+/* Area Kanvas */
+#canvas-area {
+    border: 2px dashed #555; /* Border lebih terlihat di tema gelap */
+    padding: 4px;
+    line-height: 0;
+    border-radius: 8px;
+    margin-top: 1rem;
+}
+canvas {
+    cursor: crosshair;
+    display: block;
+    background-color: #f0f2f5; /* Kanvas tetap terang agar gambar terlihat jelas */
+    border-radius: 4px;
+}
+canvas.transform-mode {
+    cursor: pointer;
+}
